@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\IndexRequest;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
+use App\Services\PostService;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +16,8 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     use AuthorizesRequests;
+
+    public function __construct(private PostService $postService) {}
 
     public function index()
     {
@@ -49,8 +53,10 @@ class PostController extends Controller
         return response()->noContent();
     }
 
-    public function myPosts()
+    public function myPosts(IndexRequest $request)
     {
-        return PostResource::collection(Auth::user()->posts);
+        $trips = $this->postService->myPosts($request);
+
+        return response()->json($trips);
     }
 }

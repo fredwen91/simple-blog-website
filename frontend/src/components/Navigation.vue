@@ -34,7 +34,7 @@ const onLogout = async () => {
 <template>
   <v-toolbar color="blue-darken-4">
     <v-toolbar-title>
-      <!-- <v-img :src="require('@/assets/lcgi-logo.png')" max-width="220" min-width="150"></v-img> -->
+      <!-- <v-img :src="require('@/assets/logo.png')" max-width="220" min-width="150"></v-img> -->
     </v-toolbar-title>
 
     <v-toolbar-items>
@@ -88,47 +88,19 @@ const onLogout = async () => {
             </v-btn>
           </v-list-item> -->
           <v-list-item>
-            <v-btn size="small" color="primary" block variant="tonal">
-              View Profile
-            </v-btn>
+            <v-btn size="small" color="primary" block variant="tonal"> View Profile </v-btn>
           </v-list-item>
         </v-list>
         <v-divider></v-divider>
 
         <v-list density="compact">
-          <v-list-item color="primary">
+          <v-list-item :to="{ name: 'myPosts' }" color="primary">
             <template v-slot:prepend>
               <v-icon icon="mdi-post"></v-icon>
             </template>
 
-            <v-list-item-title> My Blogs </v-list-item-title>
+            <v-list-item-title> My Posts </v-list-item-title>
           </v-list-item>
-
-          <!-- <v-list-item :to="{ name: 'jobApplications' }" color="primary">
-            <template v-slot:prepend>
-              <v-icon icon="mdi-briefcase-account-outline"></v-icon>
-            </template>
-
-            <v-list-item-title> Job Applications </v-list-item-title>
-          </v-list-item> -->
-
-          <!-- <div v-if="isEmployee">
-            <v-list-item
-              v-for="(item, i) in menuItems"
-              :key="i"
-              :value="item"
-              :to="{ name: item.to }"
-              color="primary"
-            >
-              <template v-slot:prepend>
-                <v-icon :icon="item.icon"></v-icon>
-              </template>
-
-              <v-list-item-title>
-                {{ item.title }}
-              </v-list-item-title>
-            </v-list-item>
-          </div> -->
 
           <v-divider></v-divider>
 
