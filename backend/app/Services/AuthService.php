@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
@@ -33,7 +34,7 @@ class AuthService
         return [
             'message' => 'Login successful',
             'token' => $token,
-            'user' => $user
+            'user' => new UserResource($user)
         ];
     }
 }
